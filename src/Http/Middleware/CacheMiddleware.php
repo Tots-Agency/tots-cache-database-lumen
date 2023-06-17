@@ -16,7 +16,7 @@ class CacheMiddleware
     public function handle($request, Closure $next, $keyName)
     {
         // Verify if exist cache
-        $cache = \Tots\CacheDatabase\Models\TotsCache::where('key_name', $keyName)->whereRaw('expires > NOW()')->first();
+        $cache = \Tots\CacheDatabase\Models\TotsCache::where('key_name', $keyName)->whereRaw('expires_at > NOW()')->first();
 
         if($cache !== null){
             return $cache->data;
