@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tots_cache', function (Blueprint $table) {
             $table->id();
             $table->string('key_name', 150)->nullable(false)->unique();
-            $table->longText('data')->nullable(true);
+            $table->json('data')->nullable(true);
             $table->dateTime('expires_at')->nullable(false)->index();
         });
     }
